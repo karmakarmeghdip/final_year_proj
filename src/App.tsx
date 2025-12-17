@@ -1,11 +1,17 @@
+import FakeNewsInput from './components/FakeNewsInput';
+import AnalysisResultView from './components/AnalysisResultView';
+import { useAtom } from 'jotai';
+import { currentViewAtom } from './store/atoms';
 import "./App.css";
 
-function demo() {
+function App() {
+  const [currentView] = useAtom(currentViewAtom);
+
   return (
     <>
-      <div className="text-lg text-white bg-black">Hello World</div>
+      {currentView === 'input' ? <FakeNewsInput /> : <AnalysisResultView />}
     </>
-  )
+  );
 }
 
-export default demo;
+export default App;
